@@ -1,6 +1,5 @@
 from typing import Optional
 
-from game.state import F_GER
 from game.unit import Unit
 
 class UnitNotFound(Exception):
@@ -10,7 +9,7 @@ class Hex:
 
     # Just a singleton, but we like to write unreadable code
 
-    def __init__(self, x: int, y: int, country = F_GER):
+    def __init__(self, x: int, y: int, country = 0):
         """ Are you surprised? """
         self.x = x
         self.y = y
