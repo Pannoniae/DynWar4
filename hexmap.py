@@ -1,6 +1,6 @@
 from typing import Optional
 
-from game.unit import Unit
+from unit import Unit
 
 class UnitNotFound(Exception):
     pass
