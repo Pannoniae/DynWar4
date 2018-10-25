@@ -1,30 +1,7 @@
-import logging
 from typing import Optional
 
 from game.state import F_GER
 from game.unit import Unit
-
-
-class TerrainType:
-    t_sea = 0
-    t_clr = 10
-    t_mtn = 20
-    t_hll = 21
-    t_for = 30
-    t_cty = 40
-    t_des = 50
-
-    @classmethod
-    def major_type_for(cls, terrain):
-        return terrain - (terrain % 10)
-
-    @classmethod
-    def is_major_type(cls, terrain):
-        return terrain % 10 == 0
-
-    @classmethod
-    def is_minor_type(cls, terrain):
-        return not cls.is_major_type(terrain)
 
 class UnitNotFound(Exception):
     pass
@@ -33,11 +10,10 @@ class Hex:
 
     # Just a singleton, but we like to write unreadable code
 
-    def __init__(self, x: int, y: int, country = F_GER, terrain = TerrainType.t_clr):
+    def __init__(self, x: int, y: int, country = F_GER):
         """ Are you surprised? """
         self.x = x
         self.y = y
-        self.terrain = terrain
         self.country = country
         self.unit: Optional[Unit] = None
 
@@ -56,7 +32,7 @@ class Hex:
         return f'<Hex({self.x}, {self.y})>'
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y and self.terrain == other.terrain
+        return self.x == other.x and self.y == other.y
 
     def __ne__(self, other):
         return not self.__eq__(other)
