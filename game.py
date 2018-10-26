@@ -1,3 +1,9 @@
+from hexmap import HexMap
+
+
 class Game:
-    pass
+
+    def __init__(self):
+
+        self.hexmap = HexMap(10)
 
